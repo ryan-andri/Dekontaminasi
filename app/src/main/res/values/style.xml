@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Dekontaminasi" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        // force to dark background
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="Theme.Dekontaminasi.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Dekontaminasi.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Dekontaminasi.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="Theme.Dekontaminasi.NavigationView" parent="ThemeOverlay.AppCompat.Dark" >
+        <item name="colorPrimary">@color/colorWhite</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+    </style>
+
+</resources>

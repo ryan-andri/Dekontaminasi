@@ -19,6 +19,11 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="@color/colorPrimary"
+        android:theme="@style/Theme.Dekontaminasi.NavigationView"
+        app:itemIconTint="@color/colorWhite"
+        app:itemTextColor="@color/colorWhite"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
+
 </androidx.drawerlayout.widget.DrawerLayout>
