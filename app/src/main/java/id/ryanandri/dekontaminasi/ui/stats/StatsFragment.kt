@@ -1,4 +1,4 @@
-package id.ryanandri.dekontaminasi.ui.gallery
+package id.ryanandri.dekontaminasi.ui.stats
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import id.ryanandri.dekontaminasi.R
 
-class GalleryFragment : Fragment() {
+class StatsFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var statsViewModel: StatsViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-                ViewModelProvider(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
+        statsViewModel =
+                ViewModelProvider(this).get(StatsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_stats, container, false)
+        val textView: TextView = root.findViewById(R.id.text_stats)
+        statsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

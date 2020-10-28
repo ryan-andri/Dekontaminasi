@@ -3,23 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_stats">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="id.ryanandri.dekontaminasi.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_stats"
+        android:name="id.ryanandri.dekontaminasi.ui.stats.StatsFragment"
+        android:label="@string/menu_stats"
+        tools:layout="@layout/fragment_stats" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="id.ryanandri.dekontaminasi.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_rs"
+        android:name="id.ryanandri.dekontaminasi.ui.rs.RsFragment"
+        android:label="@string/menu_rs"
+        tools:layout="@layout/fragment_rs" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="id.ryanandri.dekontaminasi.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
 </navigation>
