@@ -8,6 +8,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import id.ryanandri.dekontaminasi.R
+import id.ryanandri.dekontaminasi.utils.ValueFormater
 import kotlinx.android.synthetic.main.list_item_stats.view.*
 import java.util.*
 
@@ -36,9 +37,9 @@ class StatsRecyclerView(
             bindView.apply {
                 val numbers : Numbers? = item.numbers
                 regionName.text = item.name
-                regionInfected.text = numbers?.infected.toString()
-                regionRecovered.text = numbers?.recovered.toString()
-                regionFatal.text = numbers?.fatal.toString()
+                regionInfected.text = ValueFormater().decimalFormat(numbers?.infected)
+                regionRecovered.text = ValueFormater().decimalFormat(numbers?.recovered)
+                regionFatal.text = ValueFormater().decimalFormat(numbers?.fatal)
             }
         }
     }
