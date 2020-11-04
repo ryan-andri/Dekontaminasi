@@ -4,14 +4,17 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import id.ryanandri.dekontaminasi.R
 import kotlinx.android.synthetic.main.list_item_stats.view.*
+import java.util.*
 
 class StatsRecyclerView(
         private val context : Context,
         private val regionsItem : List<RegionsItem?>?,
-) : RecyclerView.Adapter<StatsRecyclerView.StatsView>() {
+) : RecyclerView.Adapter<StatsRecyclerView.StatsView>(), Filterable {
 
     private var listRegion : List<RegionsItem?>? = regionsItem
 
@@ -37,6 +40,31 @@ class StatsRecyclerView(
                 regionRecovered.text = numbers?.recovered.toString()
                 regionFatal.text = numbers?.fatal.toString()
             }
+        }
+    }
+
+    override fun getFilter(): Filter {
+        return searchFilter
+    }
+
+    private val searchFilter: Filter = object : Filter() {
+        override fun performFiltering(p0: CharSequence?): FilterResults {
+            val input : String = p0.toString().toLowerCase(Locale.ROOT).trim()
+            val result = FilterResults()
+
+            result.values = if (p0 == null || p0.isEmpty()) {
+                regionsItem
+            } else {
+                regionsItem?.filter {
+                    it?.name?.toLowerCase(Locale.ROOT)?.contains(input)!!}
+            }
+
+            return result
+        }
+
+        override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+            listRegion = p1?.values as List<RegionsItem?>?
+            notifyDataSetChanged()
         }
     }
 }

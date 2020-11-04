@@ -1,9 +1,9 @@
 package id.ryanandri.dekontaminasi.ui.stats
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.inputmethod.EditorInfo
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -30,6 +30,7 @@ class StatsFragment : Fragment() {
         statsViewModel = ViewModelProvider(this,
                         VmFactoryHandler(RetrofitService.apiService, "stats"))
                         .get(StatsViewModel::class.java)
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_stats, container, false)
     }
 
@@ -71,5 +72,32 @@ class StatsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.search_tool, menu)
+
+        val search : MenuItem = menu.findItem(R.id.search)
+        val searchView : SearchView = search.actionView as SearchView
+        searchView.queryHint = "Nama Provinsi"
+        searchView.imeOptions = EditorInfo.IME_ACTION_DONE
+        searchView.setOnQueryTextListener(
+                object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(p0: String?): Boolean {
+                        return false
+                    }
+
+                    override fun onQueryTextChange(p0: String?): Boolean {
+                        if (p0 != null) {
+                            statsAdapter.filter.filter(p0)
+                            statsAdapter.notifyDataSetChanged()
+                            return true
+                        }
+                        return false
+                    }
+                }
+        )
     }
 }

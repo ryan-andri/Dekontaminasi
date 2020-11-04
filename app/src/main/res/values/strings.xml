@@ -12,4 +12,6 @@
     <string name="stats_infected">Positif</string>
     <string name="stats_fatal">Meninggal</string>
     <string name="stats_recovered">Sembuh</string>
+
+    <string name="search">Pencarian</string>
 </resources>
