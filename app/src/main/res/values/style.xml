@@ -10,6 +10,9 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textColorPrimary">@color/colorWhite</item>
         <item name="android:windowBackground">@color/colorPrimary</item>
+
+        // cardview
+        <item name="cardViewStyle">@style/Theme.Dekontaminasi.Cardview</item>
     </style>
 
     <style name="Theme.Dekontaminasi.NoActionBar">
@@ -25,6 +28,11 @@
         <item name="colorPrimary">@color/colorWhite</item>
         <item name="android:layout_marginTop">2dp</item>
         <item name="android:layout_marginBottom">2dp</item>
+    </style>
+
+    <style name="Theme.Dekontaminasi.Cardview" parent="CardView">
+        <item name="cardBackgroundColor">@color/bg_card</item>
+        <item name="cardCornerRadius">4dp</item>
     </style>
 
 </resources>

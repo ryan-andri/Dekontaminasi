@@ -6,4 +6,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="bg_card">#2E2E2E</color>
+    <color name="colorRed">#FF6994</color>
+    <color name="colorGreen">#52FBA4</color>
 </resources>
