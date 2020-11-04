@@ -43,11 +43,15 @@ class StatsFragment : Fragment() {
         statsAdapter = StatsRecyclerView(view.context, regionList)
         statsRv.adapter = statsAdapter
 
+        statsRefresh.setOnRefreshListener {
+            observeResponse(view, true)
+        }
+
         // observe and show to the UI
-        observeResponse(view)
+        observeResponse(view, false)
     }
 
-    private fun observeResponse(view: View) {
+    private fun observeResponse(view: View, refresh : Boolean) {
         statsViewModel.getResponse().observe(viewLifecycleOwner, {
             it?.let {
                 resource ->
@@ -58,16 +62,31 @@ class StatsFragment : Fragment() {
                         regionList.addAll(regions as List<RegionsItem>)
                         statsAdapter.notifyDataSetChanged()
                         statsRv.visibility = View.VISIBLE
-                        loadingBar.visibility = View.GONE
+                        if (refresh) {
+                            statsRefresh.isRefreshing = false
+                        } else {
+                            loadingBar.visibility = View.GONE
+                        }
                     }
                     Status.ERROR -> {
-                        statsRv.visibility = View.VISIBLE
-                        loadingBar.visibility = View.GONE
+                        if (refresh) {
+                            statsRefresh.isRefreshing = false
+                            statsRv.visibility = View.VISIBLE
+                        } else {
+                            statsRv.visibility = View.VISIBLE
+                            loadingBar.visibility = View.GONE
+                        }
                         Toast.makeText(view.context, "Koneksi bermasalah!", Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
-                        loadingBar.visibility = View.VISIBLE
-                        statsRv.visibility = View.GONE
+                        if (refresh) {
+                            statsRv.visibility = View.GONE
+                            regionList.clear()
+                            statsAdapter.notifyDataSetChanged()
+                        } else {
+                            loadingBar.visibility = View.VISIBLE
+                            statsRv.visibility = View.GONE
+                        }
                     }
                 }
             }
