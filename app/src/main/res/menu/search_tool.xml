@@ -10,6 +10,6 @@
         android:icon="@drawable/ic_search"
         app:icon="@color/colorWhite"
         app:showAsAction="always"
-        app:actionViewClass="android.widget.SearchView" />
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
 </menu>
