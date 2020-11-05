@@ -36,7 +36,7 @@ class StatsRecyclerView(
         fun bindItems(item : RegionsItem) {
             bindView.apply {
                 val numbers : Numbers? = item.numbers
-                regionName.text = item.name
+                regionName.text = item.name?.toUpperCase(Locale.ROOT)
                 regionInfected.text = ValueFormater().decimalFormat(numbers?.infected)
                 regionRecovered.text = ValueFormater().decimalFormat(numbers?.recovered)
                 regionFatal.text = ValueFormater().decimalFormat(numbers?.fatal)
