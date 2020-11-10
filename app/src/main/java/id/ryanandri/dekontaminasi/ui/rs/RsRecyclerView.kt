@@ -1,6 +1,8 @@
 package id.ryanandri.dekontaminasi.ui.rs
 
+import androidx.appcompat.app.AlertDialog
 import android.content.Context
+import android.text.util.Linkify
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import id.ryanandri.dekontaminasi.R
 import kotlinx.android.synthetic.main.list_item_rs.view.*
+import kotlinx.android.synthetic.main.rs_item_detail.view.*
 import java.util.*
 
 class RsRecyclerView(
@@ -37,7 +40,28 @@ class RsRecyclerView(
                 namaRs.text = item.name
                 alamatRs.text = item.address
                 kotaRs.text = item.region
+
+                rsCard.setOnClickListener {
+                    showDetail(it, item)
+                }
             }
+        }
+
+        private fun showDetail(view: View, item : RsListResponse) {
+            val viewDialog: View = LayoutInflater.from(view.context)
+                    .inflate(R.layout.rs_item_detail, view as ViewGroup, false)
+            val alertBuilder : AlertDialog.Builder =
+                    AlertDialog.Builder(view.context, R.style.DekontaminasiDialogStyle)
+            alertBuilder.setView(viewDialog)
+
+            viewDialog.nmRs.text = item.name
+            viewDialog.almtRs.text = item.address
+            viewDialog.ktRs.text = item.region
+            viewDialog.tlpRs.text = item.phone
+            Linkify.addLinks(viewDialog.tlpRs, Linkify.PHONE_NUMBERS)
+
+            val alertDialog : AlertDialog = alertBuilder.create()
+            alertDialog.show()
         }
     }
 
