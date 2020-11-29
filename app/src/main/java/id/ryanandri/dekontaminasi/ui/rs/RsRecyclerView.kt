@@ -48,17 +48,23 @@ class RsRecyclerView(
         }
 
         private fun showDetail(view: View, item : RsListResponse) {
-            val viewDialog: View = LayoutInflater.from(view.context)
+            val context = view.context
+            val viewDialog: View = LayoutInflater.from(context)
                     .inflate(R.layout.rs_item_detail, view as ViewGroup, false)
             val alertBuilder : AlertDialog.Builder =
-                    AlertDialog.Builder(view.context, R.style.DekontaminasiDialogStyle)
+                    AlertDialog.Builder(context, R.style.DekontaminasiDialogStyle)
             alertBuilder.setView(viewDialog)
 
             viewDialog.nmRs.text = item.name
             viewDialog.almtRs.text = item.address
             viewDialog.ktRs.text = item.region
-            viewDialog.tlpRs.text = item.phone
-            Linkify.addLinks(viewDialog.tlpRs, Linkify.PHONE_NUMBERS)
+
+            if (item.phone.isNullOrBlank()) {
+                viewDialog.tlpRs.text = context.getString(R.string.no_contact)
+            } else {
+                viewDialog.tlpRs.text = item.phone
+                Linkify.addLinks(viewDialog.tlpRs, Linkify.PHONE_NUMBERS)
+            }
 
             val alertDialog : AlertDialog = alertBuilder.create()
             alertDialog.show()
