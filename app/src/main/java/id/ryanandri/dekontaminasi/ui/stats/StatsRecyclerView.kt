@@ -53,7 +53,7 @@ class StatsRecyclerView(
             val input : String = p0.toString().toLowerCase(Locale.ROOT).trim()
             val result = FilterResults()
 
-            result.values = if (p0 == null || p0.isEmpty()) {
+            result.values = if (p0.isNullOrEmpty()) {
                 regionsItem
             } else {
                 regionsItem?.filter {

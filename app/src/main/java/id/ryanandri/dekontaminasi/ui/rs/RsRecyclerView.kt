@@ -59,7 +59,7 @@ class RsRecyclerView(
             viewDialog.almtRs.text = item.address
             viewDialog.ktRs.text = item.region
 
-            if (item.phone.isNullOrBlank()) {
+            if (item.phone.isNullOrEmpty()) {
                 viewDialog.tlpRs.text = context.getString(R.string.no_contact)
             } else {
                 viewDialog.tlpRs.text = item.phone
@@ -80,7 +80,7 @@ class RsRecyclerView(
             val input : String = p0.toString().toLowerCase(Locale.ROOT).trim()
             val result = FilterResults()
 
-            result.values = if (p0 == null || p0.isEmpty()) {
+            result.values = if (p0.isNullOrEmpty()) {
                 rsItem
             } else {
                 rsItem.filter { it.name?.toLowerCase(Locale.ROOT)?.contains(input)!!

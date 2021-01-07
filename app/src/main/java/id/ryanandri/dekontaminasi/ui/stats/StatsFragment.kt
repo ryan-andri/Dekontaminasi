@@ -109,11 +109,8 @@ class StatsFragment : Fragment() {
                     }
 
                     override fun onQueryTextChange(p0: String?): Boolean {
-                        if (p0 != null) {
-                            statsAdapter.filter.filter(p0)
-                            statsAdapter.notifyDataSetChanged()
-                            return true
-                        }
+                        statsAdapter.filter.filter(p0)
+                        statsAdapter.notifyDataSetChanged()
                         return false
                     }
                 }

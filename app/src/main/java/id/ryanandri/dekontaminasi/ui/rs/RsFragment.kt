@@ -105,11 +105,8 @@ class RsFragment : Fragment() {
                     }
 
                     override fun onQueryTextChange(p0: String?): Boolean {
-                        if (p0 != null) {
-                            rsAdapter.filter.filter(p0)
-                            rsAdapter.notifyDataSetChanged()
-                            return true
-                        }
+                        rsAdapter.filter.filter(p0)
+                        rsAdapter.notifyDataSetChanged()
                         return false
                     }
                 }
