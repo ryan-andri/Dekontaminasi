@@ -8,6 +8,7 @@
 
     <string name="menu_stats">Statistik</string>
     <string name="menu_rs">Rumah Sakit</string>
+    <string name="menu_news">Berita Terkini</string>
 
     <string name="stats_infected">Positif</string>
     <string name="stats_fatal">Meninggal</string>

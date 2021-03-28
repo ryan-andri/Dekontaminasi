@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import id.ryanandri.dekontaminasi.services.ApiService
 import id.ryanandri.dekontaminasi.services.Repository
+import id.ryanandri.dekontaminasi.ui.news.NewsViewModel
 import id.ryanandri.dekontaminasi.ui.rs.RsViewModel
 import id.ryanandri.dekontaminasi.ui.stats.StatsViewModel
 
@@ -21,6 +22,11 @@ class VmFactoryHandler(
             "rs" -> {
                 if (modelClass.isAssignableFrom(RsViewModel::class.java)) {
                     return RsViewModel(Repository(apiService)) as T
+                }
+            }
+            "news" -> {
+                if (modelClass.isAssignableFrom(NewsViewModel::class.java)) {
+                    return NewsViewModel(Repository(apiService)) as T
                 }
             }
         }
