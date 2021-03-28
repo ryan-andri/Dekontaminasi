@@ -4,4 +4,5 @@ class Repository(private val apiService: ApiService) {
     suspend fun getStatsResponse() = apiService.getStatsResponse()
     suspend fun getListRs() = apiService.getRsList()
     suspend fun getListNews() = apiService.getNewsList()
+    suspend fun getAbout() = apiService.getGitUser()
 }

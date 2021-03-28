@@ -23,4 +23,10 @@
         android:label="@string/menu_news"
         tools:layout="@layout/fragment_news" />
 
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="id.ryanandri.dekontaminasi.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+
 </navigation>

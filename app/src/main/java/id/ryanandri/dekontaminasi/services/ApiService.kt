@@ -1,5 +1,6 @@
 package id.ryanandri.dekontaminasi.services
 
+import id.ryanandri.dekontaminasi.ui.about.AboutResponse
 import id.ryanandri.dekontaminasi.ui.news.NewsListResponse
 import id.ryanandri.dekontaminasi.ui.rs.RsListResponse
 import id.ryanandri.dekontaminasi.ui.stats.StatsResponse
@@ -15,4 +16,7 @@ interface ApiService {
 
     @GET("id/covid19/news")
     suspend fun getNewsList() : List<NewsListResponse>
+
+    @GET("ryan-andri")
+    suspend fun getGitUser() : Response<AboutResponse>
 }
