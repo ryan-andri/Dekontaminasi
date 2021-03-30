@@ -2,16 +2,12 @@ package id.ryanandri.dekontaminasi.ui.about
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterInside
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import id.ryanandri.dekontaminasi.R
 import id.ryanandri.dekontaminasi.custom.VmFactoryHandler
 import id.ryanandri.dekontaminasi.services.RetrofitService
@@ -44,16 +40,14 @@ class AboutFragment : Fragment() {
                     Status.SUCCESS -> {
                         loadingBar.visibility = View.GONE
                         val result : Response<AboutResponse> = resources.data as Response<AboutResponse>
-
-                        Glide.with(view)
+                        Glide.with(view.context)
                                 .load(result.body()?.avatarUrl)
-                                .override(500, 500)
+                                .override(480, 480)
                                 .circleCrop()
                                 .into(profile_img)
                         about_name.text = result.body()?.name
                         about_loc.text = result.body()?.location
                         about_blog.text = result.body()?.blog
-
                     }
                     Status.ERROR -> {
                         loadingBar.visibility = View.GONE
